@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
+    <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('assets/modules/dropzonejs/dropzone.css') }}">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
@@ -180,130 +189,34 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Logistik</h1>
+                        <h1>Upload Files</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Data Logistik</div>
+                            <div class="breadcrumb-item">Upload Files</div>
                         </div>
                     </div>
-                    <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <a href="{{ route('logistics.create') }}" class="btn btn-primary mr-2">
-                                <i class="fas fa-plus"></i> Tambah
-                            </a>
-                            <form method="GET" action="{{ route('export_logistic_pdf') }}">
-                                <input type="hidden" name="month" value="{{ request('month') }}">
-                                <input type="hidden" name="year" value="{{ request('year') }}">
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-file-pdf"></i> Export PDF
-                                </button>
-                            </form>
-                        </div>
-                        <br>
-                        <form method="GET" action="{{ route('logistics.index') }}" class="form-inline">
-                            <div class="form-group mb-2">
-                                <label for="month" class="mr-2">Bulan:</label>
-                                <select name="month" id="month" class="form-control mr-2">
-                                    <option value="">Pilih Bulan</option>
-                                    @foreach(range(1, 12) as $month)
-                                        <option value="{{ $month }}" {{ request('month') == $month ? 'selected' : '' }}>
-                                            {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="year" class="mr-2">Tahun:</label>
-                                <select name="year" id="year" class="form-control mr-2">
-                                    <option value="">Pilih Tahun</option>
-                                    @foreach(range($firstYear, $currentYear) as $year)
-                                        <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>
-                                            {{ $year }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary mb-2">Filter</button>
-                        </form>
-                        @if(Session::has('success'))
-                            <script>
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 4000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.onmouseenter = Swal.stopTimer;
-                                        toast.onmouseleave = Swal.resumeTimer;
-                                    }
-                                });
+                    <div class="section-body">
+            
 
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: "{{ Session::get('success') }}"
-                                });
-                            </script>
-                        @endif
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Daftar data logistik</h4>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead class="table-primary">
-                                            <tr>
-                                                <th class="text-center">No</th>
-                                                <th class="text-center">Kode Logistik</th>
-                                                <th class="text-center">Nama</th>
-                                                <th class="text-center">Satuan</th>
-                                                <th class="text-center">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($logistics->count() > 0)
-                                                @foreach($logistics as $logistic)
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            {{ ($logistics->currentPage() - 1) * $logistics->perPage() + $loop->iteration }}
-                                                        </td>
-                                                        <td class="text-center">{{ $logistic->kode_logistik }}</td>
-                                                        <td class="text-center">{{ $logistic->nama_logistik }}</td>
-                                                        <td class="text-center">{{ $logistic->satuan_logistik }}</td>
-                                                        <td class="text-center">
-                                                            <div class="d-flex justify-content-center" role="group"
-                                                                aria-label="Basic example">
-                                                                <a href="{{ route('logistics.show', $logistic->id) }}"
-                                                                    class="btn btn-success mr-2" title="Detail">
-                                                                    <i class="fas fa-eye"></i>
-                                                                </a>
-                                                                <a href="{{ route('logistics.edit', $logistic->id)}}"
-                                                                    class="btn btn-warning mr-2" title="Edit">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
-                                                                <form action="{{ route('logistics.destroy', $logistic->id) }}"
-                                                                    method="POST" class="p-0"
-                                                                    onsubmit="return confirm('Delete?')">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger" title="Delete">
-                                                                        <i class="fas fa-trash-alt"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td colspan="5" class="text-center">Tidak ada data data !</td>
-                                                </tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Multiple Upload</h4>
+                  </div>
+                  <div class="card-body">
+                    <form action="#" class="dropzone" id="mydropzone">
+                      <div class="fallback">
+                        <input name="file" type="file" multiple />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+            
                                     <div class="container">
                                         <div class="row justify-content-end">
                                             <div class="col-auto">
