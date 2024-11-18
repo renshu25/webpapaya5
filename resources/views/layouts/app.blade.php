@@ -122,25 +122,12 @@
             </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
-              <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
+              <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
             </li>
 
-            <li class="menu-header">Aktivitas</li>
-            <li>
-              <a href="{{ route('inlogistics')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik
-                  Masuk</span></a>
-            </li>
-            <li>
-              <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
-                <span>Logistik Keluar</span></a>
-            </li>
-            <li>
-              <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
-                <span>Permintaan Logistik</span></a>
-            </li>
             <li class="menu-header">Pengaturan</li>
             <li>
               <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profil</span></a>
@@ -243,7 +230,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Daftar stok data logistik</h4>
+                  <h4>Daftar Data Buah</h4>
                   <div class="card-header-form">
                     <form>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Upload Files &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; Deteksi &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
@@ -150,7 +150,7 @@
                         </li>
                         <li class="menu-header">Master</li>
                         <li class=active class="dropdown">
-                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Upload Files</span></a>
+                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
@@ -175,10 +175,10 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Upload Files</h1>
+            <h1>Deteksi</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                <div class="breadcrumb-item">Upload Files</div>
+                <div class="breadcrumb-item">Deteksi</div>
             </div>
         </div>
         <div class="section-body">
