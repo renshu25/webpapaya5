@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Dashboard &rsaquo; Deteksi &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logopapaya.png" type="image/png" />
 
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
@@ -91,7 +91,7 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png"
+                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
                                 class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
                         </a>
@@ -134,15 +134,15 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png"
-                            style="width: 143px; height: auto; margin-top: 20px;">
-                        <a href="{{ route('home') }}"> Werehouse BPBD </a>
+                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
+                            style="width: 73px; height: auto; margin-top: 20px;">
+                        <a href="{{ route('home') }}"> Papaya Tech </a>
                         <hr
-                            style="margin-top: 3px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
+                            style="margin-top: 23px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
                         <p><br></p>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="index.html">WB</a>
+                        <a href="index.html">PT</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li>
