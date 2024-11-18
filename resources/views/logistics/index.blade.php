@@ -150,7 +150,8 @@
                         </li>
                         <li class="menu-header">Master</li>
                         <li class=active class="dropdown">
-                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
+                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Upload
+                                    Files</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
@@ -171,95 +172,103 @@
                 </aside>
             </div>
 
- <!-- Main -->
-<div class="main-content">
-    <section class="section">
-        <div class="section-header">
-            <h1>Deteksi</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                <div class="breadcrumb-item">Deteksi</div>
-            </div>
-        </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Multiple Upload</h4>
-                        </div>
-                        <div class="card-body">
-                            <div style="display: flex; align-items: flex-start;">
-                                <div class="dropzone" id="mydropzone" style="width: 500px; height: 500px; border: 2px dashed #007bff; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-right: 20px; position: relative;">
-                                    <p id="dropzoneText">Drag & Drop files here or click to upload</p>
-                                    <input name="file" type="file" multiple style="display: none;" id="fileInput" />
-                                    <div id="imagePreview" style="display: flex; flex-wrap: wrap; justify-content: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;"></div>
-                                </div>
-                                <div class="info" id="infoContainer" style="display: flex; flex-direction: column; justify-content: flex-start; padding: 10px;">
-                                    <h5 style="font-size: 24px;">Keterangan:</h5>
-                                    <p style="font-size: 20px;">Ripeness: </p>
-                                    <p style="font-size: 20px;">Accuracy: </p>
-                                    <!-- Additional info can be added here -->
-                                </div>
-                            </div>
-                            <!-- Tombol Tambah di bawah kolom keterangan -->
-                            <div class="row">
-                                <div class="col-12 text-center mt-3">
-                                    <button class="btn btn-primary" type="button" onclick="document.getElementById('fileInput').click();" style="font-size: 20px; padding: 12px 24px;">
-                                        <i class="fas fa-camera" style="font-size: 24px;"></i>
-                                    </button>
-                                </div>
-                            </div>
+            <!-- Main -->
+            <div class="main-content">
+                <section class="section">
+                    <div class="section-header">
+                        <h1>Upload Files</h1>
+                        <div class="section-header-breadcrumb">
+                            <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                            <div class="breadcrumb-item">Upload Files</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+                    <div class="section-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Multiple Upload</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div style="display: flex; align-items: flex-start;">
+                                            <div class="dropzone" id="mydropzone"
+                                                style="width: 500px; height: 500px; border: 2px dashed #007bff; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-right: 20px; position: relative;">
+                                                <p id="dropzoneText">Drag & Drop files here or click to upload</p>
+                                                <input name="file" type="file" multiple style="display: none;"
+                                                    id="fileInput" />
+                                                <div id="imagePreview"
+                                                    style="display: flex; flex-wrap: wrap; justify-content: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
+                                                </div>
+                                            </div>
+                                            <div class="info" id="infoContainer"
+                                                style="display: flex; flex-direction: column; justify-content: flex-start; padding: 10px;">
+                                                <h5 style="font-size: 24px;">Keterangan:</h5>
+                                                <p style="font-size: 20px;">Ripeness: </p>
+                                                <p style="font-size: 20px;">Accuracy: </p>
+                                                <!-- Additional info can be added here -->
+                                            </div>
+                                        </div>
 
-<script>
-    document.getElementById('mydropzone').addEventListener('click', function() {
-        document.getElementById('fileInput').click();
-    });
+                                        <!-- Tombol Tambah di bawah kolom keterangan -->
+                                        <div class="row">
+                                            <div class="col-12 text-center mt-3">
+                                                <button class="btn btn-primary" type="button"
+                                                    style="font-size: 20px; padding: 12px 24px;">
+                                                    <i class="fas fa-camera" style="font-size: 24px;"></i>
+                                                </button>
+                                            </div>
+                                        </div>
 
-    document.getElementById('fileInput').addEventListener('change', function(event) {
-        const files = event.target.files;
-        const imagePreview = document.getElementById('imagePreview');
-        const infoContainer = document.getElementById('infoContainer');
-
-        // Clear previous previews and info
-        imagePreview.innerHTML = ''; 
-        infoContainer.innerHTML = '<h5 style="font-size: 24px;">Keterangan:</h5><p style="font-size: 20px;">Ripeness: </p><p style="font-size: 20px;">Accuracy: </p>'; // Reset info
-
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.width = '100%'; // Set width of the images to fit the dropzone
-                img.style.height = '100%'; // Set height of the images to fit the dropzone
-                img.style.objectFit = 'cover'; // Maintain aspect ratio
-                img.style.margin = '5px';
-                imagePreview.appendChild(img);
-            };
-
-            reader.readAsDataURL(file);
-        }
-
-        // Hide the default text when an image is uploaded
-        document.getElementById('dropzoneText').style.display = 'none';
-    });
-</script>
-            
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
+
+            <script>
+                document.getElementById('mydropzone').addEventListener('click', function () {
+                    document.getElementById('fileInput').click();
+                });
+
+                document.getElementById('fileInput').addEventListener('change', function (event) {
+                    const files = event.target.files;
+                    const imagePreview = document.getElementById('imagePreview');
+                    const infoContainer = document.getElementById('infoContainer');
+
+                    // Clear previous previews and info
+                    imagePreview.innerHTML = '';
+                    infoContainer.innerHTML = '<h5 style="font-size: 24px;">Keterangan:</h5><p style="font-size: 20px;">Ripeness: </p><p style="font-size: 20px;">Accuracy: </p>'; // Reset info
+
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.style.width = '100%'; // Set width of the images to fit the dropzone
+                            img.style.height = '100%'; // Set height of the images to fit the dropzone
+                            img.style.objectFit = 'cover'; // Maintain aspect ratio
+                            img.style.margin = '5px';
+                            imagePreview.appendChild(img);
+                        };
+
+                        reader.readAsDataURL(file);
+                    }
+
+                    // Hide the default text when an image is uploaded
+                    document.getElementById('dropzoneText').style.display = 'none';
+                });
+            </script>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div>
     </div>
     <footer class="main-footer">
         <div class="footer-left">
