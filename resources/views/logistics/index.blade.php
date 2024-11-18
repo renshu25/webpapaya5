@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Upload Files &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; Deteksi &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
