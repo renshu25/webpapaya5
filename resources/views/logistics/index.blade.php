@@ -150,8 +150,7 @@
                         </li>
                         <li class="menu-header">Master</li>
                         <li class=active class="dropdown">
-                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Upload
-                                    Files</span></a>
+                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
@@ -176,7 +175,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Upload Files</h1>
+                        <h1>Deteksi</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                             <div class="breadcrumb-item">Upload Files</div>

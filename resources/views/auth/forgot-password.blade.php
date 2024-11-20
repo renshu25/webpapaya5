@@ -18,17 +18,33 @@
 </head>
 <style>
     body {
-        background-image: url('{{ asset("tloginjadi") }}/assets/images/abstrak1.jpg');
-        background-size: cover;
-        background-position: center, center;
+        position: relative; /* Agar pseudo-elemen bisa diposisikan dengan benar */
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
+        background-image: url('{{ asset("tloginjadi") }}/assets/images/papaya8.jpg');
+        background-size: cover;
+        background-position: center, center;
+        overflow: hidden; /* Menghindari scroll jika ada elemen yang meluap */
+    }
+
+    /* Lapisan gelap */
+    body::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Warna hitam dengan transparansi 50% */
+        z-index: 0; /* Pastikan lapisan ini di belakang konten */
     }
 
     .container-fluid {
         padding-top: 90px;
         text-align: center;
+        position: relative; /* Agar konten tetap di atas lapisan gelap */
+        z-index: 1; /* Konten di atas semua lapisan */
     }
 
     @media screen and (max-width: 768px) {
@@ -47,7 +63,6 @@
         }
     }
 </style>
-
 <body>
     <div class="container-fluid ">
         <div class="container ">
@@ -70,11 +85,22 @@
                                         <input type="email" class="form-control" placeholder="Email" aria-label="Email"
                                             aria-describedby="basic-addon1" name="email">
                                     </div>
-                                    <div class="input-group center">
-                                        <button type="submit" class="btn btn-danger"
-                                            style="background-color: rgb(110, 110, 255); border-color: rgb(110, 110, 252);">Kirim
-                                            Link</button>
-                                    </div>
+                                   <div class="input-group center">
+    <style>
+        .btn-danger {
+            background-color: rgb(255, 165, 0); /* Warna oranye */
+            border-color: rgb(255, 59, 0); /* Warna border */
+            transition: background-color 0.3s, border-color 0.3s; /* Efek transisi */
+        }
+
+        .btn-danger:hover {
+            background-color: rgb(255, 140, 0); /* Warna oranye lebih gelap saat hover */
+            border-color: rgb(255, 69, 0); /* Warna border lebih gelap saat hover */
+            cursor: pointer; /* Menunjukkan bahwa tombol dapat diklik */
+        }
+    </style>
+    <button class="btn btn-danger">Kirim Link</button>
+</div>
                                 </form>
                                 <div class="row">
                                     <p class="forget-p">Warehouse | BPBD</p>
