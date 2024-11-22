@@ -150,8 +150,8 @@
                         </li>
                         <li class="menu-header">Master</li>
                         <li class=active class="dropdown">
-                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Upload
-                                    Files</span></a>
+                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>deteksi
+                                </span></a>
                         </li>
                         <li class="dropdown">
                             <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
@@ -176,10 +176,10 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Upload Files</h1>
+                        <h1>Detection Form</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Upload Files</div>
+                            <div class="breadcrumb-item">Detection</div>
                         </div>
                     </div>
                     <div class="section-body">
@@ -187,10 +187,11 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Multiple Upload</h4>
+                                        <h4>Papaya Ripeness Detection</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div style="display: flex; align-items: flex-start;">
+                                        <div style="display: flex; align-items: flex-start; flex-wrap: wrap;">
+                                            <!-- Dropzone untuk upload gambar -->
                                             <div class="dropzone" id="mydropzone"
                                                 style="width: 500px; height: 500px; border: 2px dashed #007bff; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-right: 20px; position: relative;">
                                                 <p id="dropzoneText">Drag & Drop files here or click to upload</p>
@@ -200,21 +201,44 @@
                                                     style="display: flex; flex-wrap: wrap; justify-content: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
                                                 </div>
                                             </div>
-                                            <div class="info" id="infoContainer"
-                                                style="display: flex; flex-direction: column; justify-content: flex-start; padding: 10px;">
-                                                <h5 style="font-size: 24px;">Keterangan:</h5>
-                                                <p style="font-size: 20px;">Ripeness: </p>
-                                                <p style="font-size: 20px;">Accuracy: </p>
-                                                <!-- Additional info can be added here -->
+
+                                            <!-- Keterangan Hasil Deteksi -->
+                                            <div class="info card" id="infoContainer"
+                                                style="width: 100%; max-width: 400px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; background-color: #ffffff; font-family: 'Arial', sans-serif;">
+                                                <div class="card-header"
+                                                    style="background: linear-gradient(45deg, #007bff, #0056b3); color: #ffffff; padding: 20px; text-align: center;">
+                                                    <h5
+                                                        style="font-size: 22px; margin: 0; text-transform: uppercase; font-weight: bold;">
+                                                        Detection Info</h5>
+                                                </div>
+                                                <div class="card-body"
+                                                    style="padding: 20px; display: flex; flex-direction: column; gap: 15px;">
+                                                    <p style="font-size: 18px; margin: 0;">
+                                                        <strong>Ripeness:</strong>
+                                                        <span id="ripenessResult"
+                                                            style="color: #555; font-weight: 600;">-</span>
+                                                    </p>
+                                                    <p style="font-size: 18px; margin: 0;">
+                                                        <strong>Accuracy:</strong>
+                                                        <span id="accuracyResult"
+                                                            style="color: #28a745; font-weight: 600;">-</span>
+                                                    </p>
+                                                </div>
                                             </div>
+
+
                                         </div>
 
-                                        <!-- Tombol Tambah di bawah kolom keterangan -->
+                                        <!-- Tombol Camera, Gallery, dan Deteksi -->
                                         <div class="row">
                                             <div class="col-12 text-center mt-3">
-                                                <button class="btn btn-primary" type="button"
+                                                <button class="btn btn-primary" id="cameraButton" type="button"
+                                                    style="font-size: 20px; padding: 12px 24px; margin-right: 10px;">
+                                                    <i class="fas fa-camera" style="font-size: 24px;"></i> Camera
+                                                </button>
+                                                <button class="btn btn-success" id="detectButton" type="button"
                                                     style="font-size: 20px; padding: 12px 24px;">
-                                                    <i class="fas fa-camera" style="font-size: 24px;"></i>
+                                                    <i class="fas fa-search" style="font-size: 24px;"></i> Detect
                                                 </button>
                                             </div>
                                         </div>
@@ -226,6 +250,7 @@
                     </div>
                 </section>
             </div>
+
 
             <script>
                 document.getElementById('mydropzone').addEventListener('click', function () {
