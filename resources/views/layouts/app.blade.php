@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title> Dashboard &rsaquo; Werehouse BPBD | Kabupaten Jember </title>
+  <title> Dashboard &rsaquo; Papaya Tech </title>
 
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+  <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logopapaya.png" type="image/png" />
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -63,7 +63,7 @@
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png"
+              <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
                 class="rounded-circle mr-1">
               <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div>
             </a>
@@ -106,15 +106,15 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png"
-              style="width: 143px; height: auto; margin-top: 20px;">
-            <a href="{{ route('home') }}"> Werehouse BPBD </a>
+            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
+              style="width: 73px; height: auto; margin-top: 20px;">
+            <a href="{{ route('home') }}"> Papaya Tech </a>
             <hr
-              style="margin-top: 3px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
+              style="margin-top: 23px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
             <p><br></p>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('home') }}">WB</a>
+            <a href="{{ route('home') }}">PT</a>
           </div>
           <ul class="sidebar-menu">
             <li class=active>
@@ -182,12 +182,12 @@
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
+                <div class="card-icon bg-danger">
                   <i class="far fa-user"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Jumlah Supplier</h4>
+                    <h4>Mentah</h4>
                   </div>
                   <div class="card-body">
                     {{ $suppliersCount }}
@@ -197,12 +197,12 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
+                <div class="card-icon bg-warning">
                   <i class="fas fa-sign-in-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Jumlah Penerimaan</h4>
+                    <h4>Setengah Matang</h4>
                   </div>
                   <div class="card-body">
                     {{ $inlogisticsCount }}
@@ -212,12 +212,12 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
+                <div class="card-icon bg-success">
                   <i class="fas fa-sign-out-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Jumlah Pengeluaran</h4>
+                    <h4>Matang</h4>
                   </div>
                   <div class="card-body">
                     {{ $outlogisticsCount }}
@@ -242,11 +242,10 @@
                     <thead class="table-primary">
                       <tr>
                         <th style="text-align: center;">No</th>
-                        <th style="text-align: center;">Kode Logistik</th>
-                        <th style="text-align: center;">Nama Logistik</th>
-                        <th style="text-align: center;">Supplier</th>
-                        <th style="text-align: center;">Stok Logistik</th>
-                        <th style="text-align: center;">Tanggal Kadaluarsa</th>
+                        <th style="text-align: center;">Kode buah</th>
+                        <th style="text-align: center;">kematangan</th>
+                        <th style="text-align: center;">accuracy</th>
+                        <th style="text-align: center;">Tanggal deteksi</th>
                       </tr>
                     </thead>
                     @php
@@ -283,7 +282,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+          Werehouse<div class="bullet"></div> Kabupaten Jember
         </div>
         <div class="footer-right">
         </div>

@@ -131,7 +131,7 @@
                         <p><br></p>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="index.html">WB</a>
+                        <a href="index.html">PT</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li>
