@@ -133,12 +133,10 @@
             </nav>
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
-                    <div class="sidebar-brand">
-                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
-                            style="width: 73px; height: auto; margin-top: 20px;">
-                        <a href="{{ route('home') }}"> Papaya Tech </a>
-                        <hr
-                            style="margin-top: 23px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
+                <div class="sidebar-brand">
+                        <a href="{{ route('home') }}"> 
+                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
+                        style="width: 163px; height: auto; margin-top: 20px;">
                         <p><br></p>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
