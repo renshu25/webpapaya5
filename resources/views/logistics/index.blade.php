@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}"> -->
 
-    <link rel="stylesheet" href="{{ asset('assets/modules/ionicons/css/ionicons.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/modules/ionicons/css/ionicons.min.css') }}"> -->
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('assets/modules/dropzonejs/dropzone.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/modules/dropzonejs/dropzone.css') }}"> -->
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
@@ -35,6 +35,19 @@
         gtag('config', 'UA-94034622-3');
     </script>
 
+
+
+    <style>
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        #uploadedImage {
+            max-height: 300px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 
 <body>
@@ -131,6 +144,8 @@
                     </li>
                 </ul>
             </nav>
+
+
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
@@ -169,102 +184,43 @@
                 </aside>
             </div>
 
-            <!-- Main -->
-            <div class="main-content">
-                <section class="section">
-                    <div class="section-header">
-                        <h1>Deteksi</h1>
-                        <div class="section-header-breadcrumb">
-                            <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Upload Files</div>
+            <!--main content -->
+            <div class="container mt-5">
+                <h1 class="text-center mb-4">🌟 Image Classification</h1>
+                <!-- Card for Upload -->
+                <div class="card p-4">
+                    <h4 class="text-center mb-3">Upload Your Image</h4>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="form-group mb-3">
+                            <label for="file" class="form-label">Choose an image:</label>
+                            <input type="file" name="file" id="file" class="form-control" accept="image/*" required>
                         </div>
-                    </div>
-                    <div class="section-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Multiple Upload</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div style="display: flex; align-items: flex-start;">
-                                            <div class="dropzone" id="mydropzone"
-                                                style="width: 500px; height: 500px; border: 2px dashed #007bff; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-right: 20px; position: relative;">
-                                                <p id="dropzoneText">Drag & Drop files here or click to upload</p>
-                                                <input name="file" type="file" multiple style="display: none;"
-                                                    id="fileInput" />
-                                                <div id="imagePreview"
-                                                    style="display: flex; flex-wrap: wrap; justify-content: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
-                                                </div>
-                                            </div>
-                                            <div class="info" id="infoContainer"
-                                                style="display: flex; flex-direction: column; justify-content: flex-start; padding: 10px;">
-                                                <h5 style="font-size: 24px;">Keterangan:</h5>
-                                                <p style="font-size: 20px;">Ripeness: </p>
-                                                <p style="font-size: 20px;">Accuracy: </p>
-                                                <!-- Additional info can be added here -->
-                                            </div>
-                                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
 
-                                        <!-- Tombol Tambah di bawah kolom keterangan -->
-                                        <div class="row">
-                                            <div class="col-12 text-center mt-3">
-                                                <button class="btn btn-primary" type="button"
-                                                    style="font-size: 20px; padding: 12px 24px;">
-                                                    <i class="fas fa-camera" style="font-size: 24px;"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Loading Spinner -->
+                <div id="loading" class="text-center mt-4" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
-                </section>
+                    <p class="mt-2">Processing your image...</p>
+                </div>
+
+                <!-- Prediction Result -->
+                <div id="result" class="card mt-4 p-4" style="display: none;">
+                    <h4 class="text-center">Prediction Result</h4>
+                    <div class="text-center mt-3">
+                        <!-- mENAMPILKAN HASIL GAMBAR INPUTAN -->
+                        <img id="uploadedImage" src="" alt="Uploaded Image" class="img-fluid rounded">
+                    </div>
+                    <div class="mt-3">
+                        <p class="mb-1"><strong>Prediction:</strong> <span id="prediction"
+                                class="badge bg-success"></span></p>
+                        <p class="mb-0"><strong>Confidence:</strong> <span id="confidence"></span></p>
+                    </div>
+                </div>
             </div>
-
-            <script>
-                document.getElementById('mydropzone').addEventListener('click', function () {
-                    document.getElementById('fileInput').click();
-                });
-
-                document.getElementById('fileInput').addEventListener('change', function (event) {
-                    const files = event.target.files;
-                    const imagePreview = document.getElementById('imagePreview');
-                    const infoContainer = document.getElementById('infoContainer');
-
-                    // Clear previous previews and info
-                    imagePreview.innerHTML = '';
-                    infoContainer.innerHTML = '<h5 style="font-size: 24px;">Keterangan:</h5><p style="font-size: 20px;">Ripeness: </p><p style="font-size: 20px;">Accuracy: </p>'; // Reset info
-
-                    for (let i = 0; i < files.length; i++) {
-                        const file = files[i];
-                        const reader = new FileReader();
-
-                        reader.onload = function (e) {
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            img.style.width = '100%'; // Set width of the images to fit the dropzone
-                            img.style.height = '100%'; // Set height of the images to fit the dropzone
-                            img.style.objectFit = 'cover'; // Maintain aspect ratio
-                            img.style.margin = '5px';
-                            imagePreview.appendChild(img);
-                        };
-
-                        reader.readAsDataURL(file);
-                    }
-
-                    // Hide the default text when an image is uploaded
-                    document.getElementById('dropzoneText').style.display = 'none';
-                });
-            </script>
-
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
     </div>
     </div>
     <footer class="main-footer">
@@ -274,9 +230,65 @@
         <div class="footer-right">
         </div>
     </footer>
-    </div>
-    </div>
 
+    <script>
+        const form = document.getElementById('uploadForm');
+        const loading = document.getElementById('loading');
+        const result = document.getElementById('result');
+        const hasil = {};
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            loading.style.display = 'block'; // Tampilkan spinner
+            result.style.display = 'none'; // Sembunyikan hasil sebelumnya
+            const fileInput = document.querySelector('#file');
+            const file = fileInput.files[0];
+            const fileURL = URL.createObjectURL(file);
+            console.log(fileURL)
+
+            try {
+                const formData = new FormData();
+                const file = fileInput.files[0];
+                formData.append('file', file);
+
+                fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: formData, // Kirim formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Hasil:', data);
+                    // Tampilkan respons dari API (bisa berupa prediksi atau pesan)
+                    // alert('Hasil Prediksi: ' + JSON.stringify(data));
+                    document.getElementById('uploadedImage').src = fileURL;
+                    document.getElementById('prediction').textContent = data.prediction;
+                    document.getElementById('confidence').textContent = data.confidence;
+                })
+                .catch(error => {
+                    console.error('Terjadi kesalahan:', error);
+                    alert('Terjadi kesalahan saat memproses file!');
+                });
+
+                // Tampilkan hasil prediksi jika berhasil
+                loading.style.display = 'none';
+                result.style.display = 'block';
+
+                // Menampilkan gambar yang di-upload
+                // Pastikan mengonversi path menjadi URL penuh
+               
+
+                // Menampilkan hasil prediksi
+            }
+            catch (err) {
+                // Tangani error jika gagal
+                loading.style.display = 'none'; // Sembunyikan spinner
+                console.error(err); // Log error di konsol
+                alert('Failed to process the image. Please try again.');
+            }
+
+          
+        });
+    </script>
 
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
