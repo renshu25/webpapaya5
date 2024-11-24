@@ -43,22 +43,54 @@
 
 <body>
   <div id="app">
-    <div class="main-wrapper main-wrapper-1">
-      <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
-        <form class="form-inline mr-auto">
-          <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
-                  class="fas fa-search"></i></a></li>
-          </ul>
-          <div class="search-element">
-            <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
-              data-width="250">
-            <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
-          </div>
-          <div id="clock" style="color: white; margin-left: 15px;"></div>
-        </form>
+  <div="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar">
+                <form class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
+                                    class="fas fa-bars"></i></a></li>
+                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
+                                    class="fas fa-search"></i></a></li>
+                    </ul>
+                    <div class="search-element">
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
+                    </div>
+                    <div id="clock" style="color: white; margin-left: 15px;"></div>
+                </form>
+                <script>
+                    function updateClock() {
+                        var now = new Date();
+
+                        var hours = now.getHours();
+                        var minutes = now.getMinutes();
+                        var seconds = now.getSeconds();
+                        var wib = 'WIB';
+
+                        var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                        var dayName = days[now.getDay()];
+                        var day = now.getDate();
+                        var monthName = months[now.getMonth()];
+                        var year = now.getFullYear();
+
+                        hours = (hours < 10) ? "0" + hours : hours;
+                        minutes = (minutes < 10) ? "0" + minutes : minutes;
+                        seconds = (seconds < 10) ? "0" + seconds : seconds;
+                        day = (day < 10) ? "0" + day : day;
+
+                        var clockElement = document.getElementById('clock');
+                        clockElement.innerHTML = dayName + ", " + day + " " + monthName + " " + year + "<br>" +
+                            hours + " : " + minutes + " : " + seconds + "  " + wib;
+
+                        setTimeout(updateClock, 1000);
+                    }
+
+                    updateClock();
+                </script>
         <ul class="navbar-nav navbar-right">
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
@@ -105,14 +137,12 @@
       </nav>
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
-              style="width: 73px; height: auto; margin-top: 20px;">
-            <a href="{{ route('home') }}"> Papaya Tech </a>
-            <hr
-              style="margin-top: 23px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
-            <p><br></p>
-          </div>
+        <div class="sidebar-brand">
+                        <a href="{{ route('home') }}"> 
+                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
+                        style="width: 163px; height: auto; margin-top: 20px;">
+                        <p><br></p>
+                    </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('home') }}">PT</a>
           </div>

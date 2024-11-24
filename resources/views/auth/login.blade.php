@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 log-det">
                             <div class="small-logo">
-                                <img src="{{ asset('tloginjadi') }}/assets/images/logo1login.svg" alt="Logo">
+                                <img src="{{ asset('tloginjadi') }}/assets/images/Group 1.svg" alt="Logo">
                             </div>
                             <p class="dfmn">Login Administrator</p>
 
@@ -161,9 +161,6 @@
                         <div class="col-lg-6 col-md-6 box-de">
                             <div class="inn-cover">
                                 <div class="ditk-inf">
-                                    <div class="small-logo">
-                                        <img src="{{ asset('tloginjadi') }}/assets/images/logo2login.svg" alt="Logo">
-                                    </div>
                                     <h2 class="w-100">Lupa Password? </h2>
                                     <p>Jika anda lupa password, Silahkan tekan tombol dibawah ini !</p>
                                     <a href="{{ route('password.request') }}">
