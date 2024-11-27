@@ -53,12 +53,6 @@
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
-                    <div class="search-element">
-                        <input id="search-input" class="form-control" type="search" placeholder="Search"
-                            aria-label="Search" data-width="250">
-                        <button class="btn" type="button" onclick="performSearch()"><i
-                                class="fas fa-search"></i></button>
-                    </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
                 <script>
@@ -140,7 +134,7 @@
         <div class="sidebar-brand">
                         <a href="{{ route('home') }}"> 
                         <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
-                        style="width: 163px; height: auto; margin-top: 20px;">
+                        style="width: 120px; height: auto; margin-top: 23px; margin-bottom: 28px;">
                         <p><br></p>
                     </div>
           <div class="sidebar-brand sidebar-brand-sm">
@@ -153,9 +147,6 @@
             <li class="menu-header">Master</li>
             <li class="dropdown">
               <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
             </li>
 
             <li class="menu-header">Pengaturan</li>
@@ -220,7 +211,7 @@
                     <h4>Mentah</h4>
                   </div>
                   <div class="card-body">
-                    {{ $suppliersCount }}
+                   
                   </div>
                 </div>
               </div>
@@ -235,7 +226,7 @@
                     <h4>Setengah Matang</h4>
                   </div>
                   <div class="card-body">
-                    {{ $inlogisticsCount }}
+                    
                   </div>
                 </div>
               </div>
@@ -260,24 +251,64 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Daftar Data Buah</h4>
-                  <div class="card-header-form">
-                    <form>
-
-                    </form>
-                  </div>
+                <h4>Daftar Data Buah</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="resultsTable">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th style="text-align: center;">Image</th>
+                                    <th style="text-align: center;">Prediction</th>
+                                    <th style="text-align: center;">Confidence</th>
+                                    <th style="text-align: center;">Tanggal Deteksi</th>
+                                    <th style="text-align: center;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsBody">
+                                <!-- Hasil akan ditambahkan di sini -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                    <thead class="table-primary">
-                      <tr>
-                        <th style="text-align: center;">No</th>
-                        <th style="text-align: center;">Kode buah</th>
-                        <th style="text-align: center;">kematangan</th>
-                        <th style="text-align: center;">accuracy</th>
-                        <th style="text-align: center;">Tanggal deteksi</th>
-                      </tr>
-                    </thead>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const results = JSON.parse(localStorage.getItem('results')) || [];
+        const resultsBody = document.getElementById('resultsBody');
+
+        results.forEach((result, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td style="text-align: center;"><img src="${result.image}" alt="Image" style="width: 50px;"></td>
+                <td style="text-align: center;">${result.prediction}</td>
+                <td style="text-align: center;">${result.confidence}</td>
+                <td style="text-align: center;">${result.date}</td>
+                <td style="text-align: center;">
+                    <button class="btn btn-danger btn-sm" onclick="deleteResult(${index})">Hapus</button>
+                </td>
+            `;
+            resultsBody.appendChild(row);
+        });
+    });
+
+    function deleteResult(index) {
+        // Ambil data yang sudah ada dari Local Storage
+        let results = JSON.parse(localStorage.getItem('results')) || [];
+
+        // Hapus hasil berdasarkan index
+        results.splice(index, 1);
+
+        // Simpan kembali ke Local Storage
+        localStorage.setItem('results', JSON.stringify(results));
+
+        // Refresh halaman untuk memperbarui tampilan
+        location.reload();
+    }
+</script>
                     @php
             use Carbon\Carbon;
             @endphp
@@ -312,7 +343,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Werehouse<div class="bullet"></div> Kabupaten Jember
+          PAPAYA<div class="bullet"></div> TECH
         </div>
         <div class="footer-right">
         </div>

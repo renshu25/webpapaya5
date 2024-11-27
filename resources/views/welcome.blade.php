@@ -71,27 +71,27 @@
               </a>
             </div>
             <style>
-              .btn {
-                background-color: white;
-                color: #000000;
-                border: 1px solid #007bff;
-                border-radius: 5px;
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                transition: background-color 0.3s, color 0.3s;
-              }
+  .btn {
+    background-color: #007bff; /* Warna awal biru */
+    color: white; /* Warna teks putih */
+    border: 1px solid #007bff; /* Warna border biru */
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
 
-              .btn:hover {
-                background-color: #007bff;
-                color: white;
-              }
+  .btn:hover {
+    background-color: orange; /* Warna berubah menjadi oren saat hover */
+    color: black; /* Warna teks berubah menjadi hitam saat hover */
+  }
 
-              i {
-                font-size: 18px;
-                margin-right: 5px;
-              }
-            </style>
+  i {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+</style>
           </nav>
         </div>
       </div>
@@ -103,16 +103,16 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
-            <h1 class="ud-hero-title">
-              Selamat Datang Di Website Werehouse <br> Badan Penanggulangan Bencana Daerah <br> Kabupaten Jember <br>
-              Sistem Manajemen Inventory Logistik
-            </h1>
+          <h1 class="ud-hero-title">
+    Deteksi Kematangan Buah Pepaya <br> 
+    Dengan Menggunakan Metode CNN
+</h1>
           </div>
           <div class="ud-hero-brands-wrapper wow fadeInUp" data-wow-delay=".3s">
           </div>
           <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
 
-            <img src="{{ asset('landingpages') }}/assets/images/hero/dashboard-img.png" alt="hero-image" />
+            <img src="{{ asset('landingpages') }}/assets/images/hero/dashboard.png" alt="hero-image" />
 
             <img src="{{ asset('landingpages') }}/assets/images/hero/dotted-shape.svg" alt="shape"
               class="shape shape-1" />
@@ -128,14 +128,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="ud-section-title">
-            <span>Fitur Utama</span>
-            <h2>Werehouse BPBD</h2>
-            <p>
-              Fitur-fitur ini dirancang untuk membantu BPBD Kabupaten Jember dalam mengelola
-              persediaan mereka dengan efisien.
-            </p>
-          </div>
+         <div class="ud-section-title">
+    <span>Fitur Utama</span>
+    <h2>Deteksi Kematangan Buah Pepaya</h2>
+    <p>
+        Fitur-fitur ini dirancang untuk membantu dalam proses deteksi kematangan buah pepaya 
+        menggunakan metode Convolutional Neural Network (CNN) secara efisien dan efektif.
+    </p>
+</div>
         </div>
       </div>
       <div class="row">
@@ -148,12 +148,12 @@
               <i class="lni lni-layout"></i>
             </div>
             <div class="ud-feature-content">
-              <h3 class="ud-feature-title">Cetak Laporan</h3>
-              <p class="ud-feature-desc">
-                Fitur Cetak Laporan untuk membuat laporan yang mencakup berbagai informasi
-                penting seperti jumlah persediaan, pergerakan barang, dan tingkat stok.
-              </p>
-            </div>
+    <h3 class="ud-feature-title">Analisis Gambar Kematangan</h3>
+    <p class="ud-feature-desc">
+        Fitur ini memungkinkan pengguna untuk mengunggah gambar buah pepaya dan mendapatkan 
+        analisis otomatis mengenai tingkat kematangan berdasarkan model CNN yang telah dilatih.
+    </p>
+</div>
           </div>
         </div>
         <div class="col-xl-3 col-lg-3 col-sm-6">
@@ -162,12 +162,13 @@
               <i class="lni lni-layers"></i>
             </div>
             <div class="ud-feature-content">
-              <h3 class="ud-feature-title">Pemantauan Stok Secara Langsung</h3>
-              <p class="ud-feature-desc">
-                Fitur pemantauan stok real-time memberikan informasi langsung
-                tentang persediaan barang secara akurat dan terkini.
-              </p>
-            </div>
+    <h3 class="ud-feature-title">Pemantauan Kematangan Secara Real-Time</h3>
+    <p class="ud-feature-desc">
+        Fitur ini memberikan pemantauan real-time terhadap kematangan buah pepaya, 
+        memungkinkan pengguna untuk mengambil keputusan cepat berdasarkan data terkini 
+        dan akurat.
+    </p>
+</div>
           </div>
         </div>
       </div>
@@ -179,154 +180,24 @@
       <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
         <div class="ud-about-content-wrapper">
           <div class="ud-about-content">
-            <h2>Werehouse BPBD <br> Kabupaten Jember
+            <h2>PAPAYA TECH
             </h2>
             <p>
-              Website Manajemen Stok Logistik "Werehouse BPBD Kabupaten Jember"
+            Website Deteksi Kematangan Buah Pepaya adalah sebuah platform digital yang dirancang khusus untuk "
             </p>
             <a href="{{ route('about') }}" class="ud-main-btn">
               Selengkapnya
             </a>
           </div>
         </div>
-        <div class="ud-about-image">
-          <img src="{{ asset('landingpages') }}/assets/images/about/about-image.svg" alt="about-image" />
+        <div class="ud-about-image">  
+          <img src="{{ asset('landingpages') }}/assets/images/about/papaya11.svg" alt="about-image" />
         </div>
       </div>
     </div>
   </section>
 
-  <section id="faq" class="ud-faq">
-    <div class="shape">
-      <img src="{{ asset('landingpages') }}/assets/images/faq/shape.svg" alt="shape" />
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="ud-section-title text-center mx-auto">
-            <span>FAQ</span>
-            <h2>Pertanyaan? Menjawab</h2>
-            <p>
-              Pertanyaan dan jawaban terkait manajemen stok logistik
-              <br> Badan Penanggulangan Bencana Daerah Kabupaten Jember
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
-            <div class="accordion">
-              <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                <span class="icon flex-shrink-0">
-                  <i class="lni lni-chevron-down"></i>
-                </span>
-                <span>Apa yang dimaksud dengan manajemen stok logistik?</span>
-              </button>
-              <div id="collapseOne" class="accordion-collapse collapse">
-                <div class="ud-faq-body">
-                  Manajemen stok logistik merupakan proses perencanaan,
-                  pengorganisasian, pengendalian, dan pengawasan terhadap
-                  persediaan barang-barang yang dibutuhkan dalam kegiatan
-                  logistik, seperti bahan makanan, obat-obatan, dan
-                  perlengkapan lainnya.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
-            <div class="accordion">
-              <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                <span class="icon flex-shrink-0">
-                  <i class="lni lni-chevron-down"></i>
-                </span>
-                <span>Bagaimana pentingnya manajemen stok logistik bagi BPBD Kabupaten Jember?</span>
-              </button>
-              <div id="collapseTwo" class="accordion-collapse collapse">
-                <div class="ud-faq-body">
-                  Manajemen stok logistik sangat penting bagi BPBD Kabupaten Jember
-                  karena membantu memastikan ketersediaan barang-barang
-                  penting dalam menanggapi bencana dan situasi darurat.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
-            <div class="accordion">
-              <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                <span class="icon flex-shrink-0">
-                  <i class="lni lni-chevron-down"></i>
-                </span>
-                <span>Bagaimana proses pengelolaan stok logistik dilakukan di BPBD Jember?</span>
-              </button>
-              <div id="collapseThree" class="accordion-collapse collapse">
-                <div class="ud-faq-body">
-                  Proses pengelolaan stok logistik di BPBD Jember meliputi
-                  pemantauan persediaan, pengadaan barang, penyimpanan,
-                  distribusi, dan pembaruan inventaris secara berkala.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
-            <div class="accordion">
-              <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                <span class="icon flex-shrink-0">
-                  <i class="lni lni-chevron-down"></i>
-                </span>
-                <span>Apa saja jenis stok logistik yang dikelola oleh BPBD Kabupaten Jember?</span>
-              </button>
-              <div id="collapseFour" class="accordion-collapse collapse">
-                <div class="ud-faq-body">
-                  Jenis stok logistik yang dikelola oleh BPBD Jember meliputi
-                  makanan, air bersih, tenda pengungsian, perlengkapan medis,
-                  dan peralatan komunikasi darurat.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
-            <div class="accordion">
-              <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
-                <span class="icon flex-shrink-0">
-                  <i class="lni lni-chevron-down"></i>
-                </span>
-                <span>Bagaimana BPBD Kabupaten Jember memastikan ketersediaan stok logistik dalam situasi
-                  darurat?</span>
-              </button>
-              <div id="collapseFive" class="accordion-collapse collapse">
-                <div class="ud-faq-body">
-                  BPBD Jember memastikan ketersediaan stok logistik dalam situasi
-                  darurat dengan melakukan perencanaan yang matang, kerjasama
-                  dengan pihak terkait, dan sistem pemantauan yang efektif.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
-            <div class="accordion">
-              <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix">
-                <span class="icon flex-shrink-0">
-                  <i class="lni lni-chevron-down"></i>
-                </span>
-                <span>Apa saja pencapaian BPBD Kabupaten Jember sejak berdiri hingga saat ini?</span>
-              </button>
-              <div id="collapseSix" class="accordion-collapse collapse">
-                <div class="ud-faq-body">
-                  Pencapaian BPBD Jember termasuk keberhasilan dalam merespons
-                  bencana alam, penyuluhan masyarakat tentang mitigasi bencana,
-                  serta pembentukan relawan dan tim tanggap darurat yang handal.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <section id="team" class="ud-team">
     <div class="container">
@@ -335,10 +206,7 @@
           <div class="ud-section-title mx-auto text-center">
             <span>Tim Kami</span>
             <p>
-              Kami bekerja sama untuk merancang, mengembangkan, dan
-              meluncurkan website yang memenuhi standar kualitas
-              dan mencerminkan komitmen BPBD Kabupaten Jember dalam
-              memberikan layanan terbaik kepada masyarakat.
+  
             </p>
           </div>
         </div>
@@ -357,12 +225,12 @@
               <img src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg" alt="shape" class="shape shape-2" />
             </div>
             <div class="ud-team-info">
-              <h5>Mohammad Ihsanuddin</h5>
-              <h6>Web Developer</h6>
+              <h5>Mohammad Sayyidi</h5>
+              <h6></h6>
             </div>
             <ul class="ud-team-socials">
               <li>
-                <a href="https://www.instagram.com/isan.nuddin/">
+                <a href="https://www.instagram.com/sayyyidi_/">
                   <i class="lni lni-instagram-filled"></i>
                 </a>
               </li>
@@ -381,12 +249,12 @@
               <img src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg" alt="shape" class="shape shape-2" />
             </div>
             <div class="ud-team-info">
-              <h5>Muhammad Guntur Wijaya</h5>
-              <h6>App Developer</h6>
+              <h5>Rendy Maulana</h5>
+              <h6></h6>
             </div>
             <ul class="ud-team-socials">
               <li>
-                <a href="https://www.instagram.com/gunturwijayahh/">
+                <a href="https://www.instagram.com/ren.dayyyyy/">
                   <i class="lni lni-instagram-filled"></i>
                 </a>
               </li>
@@ -406,7 +274,7 @@
             </div>
             <div class="ud-team-info">
               <h5>Fahmi Fahreza</h5>
-              <h6>UI/UX Design</h6>
+              <h6></h6>
             </div>
             <ul class="ud-team-socials">
               <li>
@@ -430,7 +298,7 @@
             </div>
             <div class="ud-team-info">
               <h5>Caesar Ali</h5>
-              <h6>Quality Assurance Analyst</h6>
+              <h6></h6>
             </div>
             <ul class="ud-team-socials">
               <li>
@@ -456,11 +324,11 @@
               </div>
               <div class="ud-team-info">
                 <h5>Rayhan Cahyadi</h5>
-                <h6>Software Management</h6>
+                <h6></h6>
               </div>
               <ul class="ud-team-socials">
                 <li>
-                  <a href="https://www.instagram.com/alicaesar42/">
+                  <a href="https://www.instagram.com/reyyudahbaligh_/">
                     <i class="lni lni-instagram-filled"></i>
                   </a>
                 </li>
@@ -490,9 +358,8 @@
                   <i class="lni lni-map-marker"></i>
                 </div>
                 <div class="ud-info-meta">
-                  <h5>Kantor BPBD Kabupaten Jember</h5>
-                  <p>Jl. Danau Toba No.16, Lingkungan Panji, Tegalgede, Kec. Sumbersari, Kabupaten Jember, Jawa Timur
-                    68124</p>
+                  <h5>lokasi</h5>
+                  <p></p>
                 </div>
               </div>
               <div class="ud-single-info">
@@ -501,8 +368,8 @@
                 </div>
                 <div class="ud-info-meta">
                   <h5>Apa yang bisa kami bantu?</h5>
-                  <p>bpbd@jemberkab.go.id</p>
-                  <p>Telepon: 081259701797 </p>
+                  <p></p>
+                  <p>Telepon:  </p>
                 </div>
               </div>
             </div>
@@ -531,22 +398,21 @@
                 <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="logo" />
               </a>
               <p class="ud-widget-desc">
-                Website ini bertujuan untuk meningkatkan efisiensi, transparansi,
-                dan keterlibatan dalam manajemen stok logistik BPBD Kabupaten Jember.
-              </p>
+    Website ini bertujuan untuk meningkatkan efisiensi, akurasi, dan kecepatan dalam proses deteksi kematangan buah pepaya, serta memberikan informasi yang transparan dan mudah diakses bagi petani dan pengelola hasil pertanian.
+</p>
               <ul class="ud-widget-socials">
                 <li>
-                  <a href="https://www.facebook.com/bpbd.jember">
+                  <a href="https://www.facebook.com/">
                     <i class="lni lni-facebook-filled"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/pusdalops_jbr">
+                  <a href="https://twitter.com/">
                     <i class="lni lni-twitter-filled"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/bpbd_kab.jember/">
+                  <a href="https://www.instagram.com//">
                     <i class="lni lni-instagram-filled"></i>
                   </a>
                 </li>
@@ -578,10 +444,10 @@
               <h5 class="ud-widget-title">Fitur Utama</h5>
               <ul class="ud-widget-links">
                 <li>
-                  <a href="#home">Cetak Laporan</a>
+                  <a href="#home">Analisis Gambar Kematangan</a>
                 </li>
                 <li>
-                  <a href="#home">Pemantauan Stok Secara Langsung</a>
+                  <a href="#home">Pemantauan Kematangan Secara Real-Time</a>
                 </li>
               </ul>
             </div>
@@ -601,8 +467,8 @@
           </div>
           <div class="col-md-4">
             <p class="ud-footer-bottom-right">
-              Selamat Datang Di Website Resmi Werehouse BPBD
-              <a href="/" rel="nofollow">Werehouse BPBD Kabupaten Jember </a>
+              Selamat Datang Di Website PAPAYA TECH
+              <a href="/" rel="nofollow"> </a>
             </p>
           </div>
         </div>

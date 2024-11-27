@@ -105,15 +105,10 @@
           <div class="ud-about-content-wrapper">
             <div class="ud-about-content">
               <span class="tag">Profil</span>
-              <h2>Werehouse BPBD <br> Kabupaten Jember
+              <h2>PAPAYA TECH
               </h2>
               <p>
-                Website Manajemen Stok Logistik "Werehouse BPBD Kabupaten Jember" adalah sebuah
-                platform digital yang dirancang khusus untuk membantu Badan Penanggulangan Bencana
-                Daerah (BPBD) Kabupaten Jember dalam mengelola dan mengoptimalkan manajemen stok
-                logistik. Website ini memiliki berbagai fitur dan fungsionalitas yang
-                dirancang untuk meningkatkan efisiensi, visibilitas, dan responsivitas dalam pengelolaan
-                persediaan barang dan layanan logistik dalam konteks penanggulangan bencana.
+              Website Deteksi Kematangan Buah Pepaya adalah sebuah platform digital yang dirancang khusus untuk membantu petani dan pengelola hasil pertanian dalam menganalisis dan mengoptimalkan proses deteksi kematangan buah pepaya. Dengan memanfaatkan teknologi Convolutional Neural Network (CNN), website ini menawarkan berbagai fitur dan fungsionalitas yang bertujuan untuk meningkatkan efisiensi, akurasi, dan responsivitas dalam pengelolaan hasil pertanian. Platform ini memberikan informasi yang tepat waktu mengenai tingkat kematangan buah, memungkinkan pengguna untuk mengambil keputusan yang lebih baik terkait waktu panen dan distribusi produk. Dengan demikian, website ini berkontribusi pada pengelolaan hasil pertanian yang lebih efektif dan berkelanjutan.
               </p>
             </div>
           </div>
@@ -133,10 +128,6 @@
             <div class="ud-section-title mx-auto text-center">
               <span>Tim Kami</span>
               <p>
-                Kami bekerja sama untuk merancang, mengembangkan, dan 
-                meluncurkan website yang memenuhi standar kualitas
-                dan mencerminkan komitmen BPBD Kabupaten Jember dalam
-                memberikan layanan terbaik kepada masyarakat.
               </p>
             </div>
           </div>

@@ -104,10 +104,6 @@
           <div class="col-xl-8 col-lg-7">
             <div class="ud-contact-content-wrapper">
               <div class="ud-contact-title">
-              <span> Kontak Kami <br> Tim kami siap membantu Anda <br> Silakan hubungi kami menggunakan informasi kontak pesan</span>
-                <h2>
-                    Informasi Terkait
-                </h2>
               </div>
               <div class="ud-contact-info-wrapper">
                 <div class="ud-single-info">
@@ -115,7 +111,6 @@
                     <i class="lni lni-map-marker"></i>
                   </div>
                   <div class="ud-info-meta">
-                    <h5>Kantor BPBD Kabupaten Jember</h5>
                     <p>Jl. Danau Toba No.16, Lingkungan Panji, Tegalgede, Kec. Sumbersari, Kabupaten Jember, Jawa Timur 68124</p>
                   </div>
                 </div>

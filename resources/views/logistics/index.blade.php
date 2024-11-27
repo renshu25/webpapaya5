@@ -62,12 +62,6 @@
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
-                    <div class="search-element">
-                        <input id="search-input" class="form-control" type="search" placeholder="Search"
-                            aria-label="Search" data-width="250">
-                        <button class="btn" type="button" onclick="performSearch()"><i
-                                class="fas fa-search"></i></button>
-                    </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
                 <script>
@@ -165,9 +159,6 @@
                         <li class=active class="dropdown">
                             <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
                         </li>
-                        <li class="dropdown">
-                            <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
-                        </li>
                         <li class="menu-header">Pengaturan</li>
                         <li>
                             <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i>
@@ -185,110 +176,115 @@
             </div>
 
             <!--main content -->
-            <div class="container mt-5">
-                <h1 class="text-center mb-4">🌟 Image Classification</h1>
-                <!-- Card for Upload -->
-                <div class="card p-4">
-                    <h4 class="text-center mb-3">Upload Your Image</h4>
-                    <form id="uploadForm" enctype="multipart/form-data">
-                        <div class="form-group mb-3">
-                            <label for="file" class="form-label">Choose an image:</label>
-                            <input type="file" name="file" id="file" class="form-control" accept="image/*" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
-                    </form>
-                </div>
-
-                <!-- Loading Spinner -->
-                <div id="loading" class="text-center mt-4" style="display: none;">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <p class="mt-2">Processing your image...</p>
-                </div>
-
-                <!-- Prediction Result -->
-                <div id="result" class="card mt-4 p-4" style="display: none;">
-                    <h4 class="text-center">Prediction Result</h4>
-                    <div class="text-center mt-3">
-                        <!-- mENAMPILKAN HASIL GAMBAR INPUTAN -->
-                        <img id="uploadedImage" src="" alt="Uploaded Image" class="img-fluid rounded">
-                    </div>
-                    <div class="mt-3">
-                        <p class="mb-1"><strong>Prediction:</strong> <span id="prediction"
-                                class="badge bg-success"></span></p>
-                        <p class="mb-0"><strong>Confidence:</strong> <span id="confidence"></span></p>
-                    </div>
-                </div>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Image Classification</h1>
+    <!-- Card for Upload -->
+    <div class="card p-4">
+        <h4 class="text-center mb-3">Upload Your Image</h4>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+                <label for="file" class="form-label">Choose an image:</label>
+                <input type="file" name="file" id="file" class="form-control" accept="image/*" required>
             </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
     </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="text-center mt-4" style="display: none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Processing your image...</p>
     </div>
-    <footer class="main-footer">
-        <div class="footer-left">
-            Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
-        </div>
-        <div class="footer-right">
-        </div>
-    </footer>
 
-    <script>
-        const form = document.getElementById('uploadForm');
-        const loading = document.getElementById('loading');
-        const result = document.getElementById('result');
-        const hasil = {};
+    <!-- Prediction Result -->
+    <div id="result" class="card mt-4 p-4" style="display: none;">
+        <h4 class="text-center">Prediction Result</h4>
+        <div class="text-center mt-3">
+            <!-- mENAMPILKAN HASIL GAMBAR INPUTAN -->
+            <img id="uploadedImage" src="" alt="Uploaded Image" class="img-fluid rounded">
+        </div>
+        <div class="mt-3">
+            <p class="mb-1"><strong>Prediction:</strong> <span id="prediction" class="badge bg-success"></span></p>
+            <p class="mb-0"><strong>Confidence:</strong> <span id="confidence"></span></p>
+        </div>
+        <button id="saveButton" class="btn btn-success w-100 mt-3">Simpan</button>
+    </div>
+</div>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            loading.style.display = 'block'; // Tampilkan spinner
-            result.style.display = 'none'; // Sembunyikan hasil sebelumnya
-            const fileInput = document.querySelector('#file');
+<script>
+    const form = document.getElementById('uploadForm');
+    const loading = document.getElementById('loading');
+    const result = document.getElementById('result');
+    const hasil = {};
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loading.style.display = 'block'; // Tampilkan spinner
+        result.style.display = 'none'; // Sembunyikan hasil sebelumnya
+        const fileInput = document.querySelector('#file');
+        const file = fileInput.files[0];
+        const fileURL = URL.createObjectURL(file);
+        console.log(fileURL)
+
+        try {
+            const formData = new FormData();
             const file = fileInput.files[0];
-            const fileURL = URL.createObjectURL(file);
-            console.log(fileURL)
+            formData.append('file', file);
 
-            try {
-                const formData = new FormData();
-                const file = fileInput.files[0];
-                formData.append('file', file);
+            fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                body: formData, // Kirim formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Hasil:', data);
+                // Tampilkan respons dari API (bisa berupa prediksi atau pesan)
+                // alert('Hasil Prediksi: ' + JSON.stringify(data));
+                document.getElementById('uploadedImage').src = fileURL;
+                document.getElementById('prediction').textContent = data.prediction;
+                document.getElementById('confidence').textContent = data.confidence;
+            })
+            .catch(error => {
+                console.error('Terjadi kesalahan:', error);
+                alert('Terjadi kesalahan saat memproses file!');
+            });
 
-                fetch('http://127.0.0.1:5000/predict', {
-                    method: 'POST',
-                    body: formData, // Kirim formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Hasil:', data);
-                    // Tampilkan respons dari API (bisa berupa prediksi atau pesan)
-                    // alert('Hasil Prediksi: ' + JSON.stringify(data));
-                    document.getElementById('uploadedImage').src = fileURL;
-                    document.getElementById('prediction').textContent = data.prediction;
-                    document.getElementById('confidence').textContent = data.confidence;
-                })
-                .catch(error => {
-                    console.error('Terjadi kesalahan:', error);
-                    alert('Terjadi kesalahan saat memproses file!');
-                });
+            // Tampilkan hasil prediksi jika berhasil
+            loading.style.display = 'none';
+            result.style.display = 'block';
+        }
+        catch (err) {
+            // Tangani error jika gagal
+            loading.style.display = 'none'; // Sembunyikan spinner
+            console.error(err); // Log error di konsol
+            alert('Failed to process the image. Please try again.');
+        }
+    });
 
-                // Tampilkan hasil prediksi jika berhasil
-                loading.style.display = 'none';
-                result.style.display = 'block';
+    document.getElementById('saveButton').addEventListener('click', () => {
+        const prediction = document.getElementById('prediction').textContent;
+        const confidence = document.getElementById('confidence').textContent;
+        const uploadedImage = document.getElementById('uploadedImage').src;
 
-                // Menampilkan gambar yang di-upload
-                // Pastikan mengonversi path menjadi URL penuh
-               
+        // Ambil data yang sudah ada dari Local Storage
+        let results = JSON.parse(localStorage.getItem('results')) || [];
 
-                // Menampilkan hasil prediksi
-            }
-            catch (err) {
-                // Tangani error jika gagal
-                loading.style.display = 'none'; // Sembunyikan spinner
-                console.error(err); // Log error di konsol
-                alert('Failed to process the image. Please try again.');
-            }
-
-          
+        // Tambahkan hasil baru
+        results.push({
+            image: uploadedImage,
+            prediction: prediction,
+            confidence: confidence,
+            date: new Date().toLocaleString()
         });
-    </script>
+
+        // Simpan kembali ke Local Storage
+        localStorage.setItem('results', JSON.stringify(results));
+
+        alert('Hasil berhasil disimpan!');
+ });
+</script>
 
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>

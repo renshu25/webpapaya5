@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Dashboard &rsaquo; Profil &mdash; Werehouse BPBD | Kabupaten Jember</title>
+  <title>Dashboard &rsaquo; Profil &mdash; PAPAYA TECH</title>
 
   <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logopapaya.png" type="image/png" />
 
@@ -43,11 +43,6 @@
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                   class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
-            <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
-              data-width="250">
-            <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
-          </div>
           <div id="clock" style="color: white; margin-left: 15px;"></div>
         </form>
         <script>
@@ -126,14 +121,12 @@
       </nav>
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya.png"
-              style="width: 73px; height: auto; margin-top: 20px;">
-            <a href="{{ route('home') }}"> Papaya Tech </a>
-            <hr
-              style="margin-top: 23px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
-            <p><br></p>
-          </div>
+        <div class="sidebar-brand">
+                        <a href="{{ route('home') }}"> 
+                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
+                        style="width: 120px; height: auto; margin-top: 23px; margin-bottom: 28px;">
+                        <p><br></p>
+                    </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">PT</a>
           </div>
@@ -144,9 +137,6 @@
             <li class="menu-header">Master</li>
             <li class="dropdown">
               <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Deteksi</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Buah</span></a>
             </li>
             <li class="menu-header">Pengaturan</li>
             <li class=active>
@@ -284,7 +274,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+          PAPAYA<div class="bullet"></div> TECH
         </div>
         <div class="footer-right">
         </div>
