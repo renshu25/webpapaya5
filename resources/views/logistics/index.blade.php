@@ -47,6 +47,29 @@
             max-height: 300px;
             object-fit: contain;
         }
+
+        .card {
+            max-width: 500px;
+            margin: 30px auto;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #video {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+        }
+
+        #capture,
+        #download {
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -142,11 +165,11 @@
 
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
-                <div class="sidebar-brand">
-                        <a href="{{ route('home') }}"> 
-                        <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
-                        style="width: 163px; height: auto; margin-top: 20px;">
-                        <p><br></p>
+                    <div class="sidebar-brand">
+                        <a href="{{ route('home') }}">
+                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
+                                style="width: 163px; height: auto; margin-top: 20px;">
+                            <p><br></p>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="index.html">PT</a>
@@ -176,142 +199,209 @@
             </div>
 
             <!--main content -->
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Image Classification</h1>
-    <!-- Card for Upload -->
-    <div class="card p-4">
-        <h4 class="text-center mb-3">Upload Your Image</h4>
-        <form id="uploadForm" enctype="multipart/form-data">
-            <div class="form-group mb-3">
-                <label for="file" class="form-label">Choose an image:</label>
-                <input type="file" name="file" id="file" class="form-control" accept="image/*" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
-        </form>
-    </div>
+            <div class="container mt-5">
+                <h1 class="text-center mb-4">Image Classification</h1>
+                <!-- Card for Upload -->
+                <div class="row g-4">
+                    <!-- Card Upload dan Kamera -->
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h4 class="text-center mb-3">Upload atau Ambil Foto</h4>
+                            <form id="uploadForm" enctype="multipart/form-data">
 
-    <!-- Loading Spinner -->
-    <div id="loading" class="text-center mt-4" style="display: none;">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <p class="mt-2">Processing your image...</p>
-    </div>
+                                <h5 class="text-center mt-4">Ambil Foto dari Kamera</h5>
+                                <!-- Video Stream -->
+                                <video id="video" autoplay></video>
 
-    <!-- Prediction Result -->
-    <div id="result" class="card mt-4 p-4" style="display: none;">
-        <h4 class="text-center">Prediction Result</h4>
-        <div class="text-center mt-3">
-            <!-- mENAMPILKAN HASIL GAMBAR INPUTAN -->
-            <img id="uploadedImage" src="" alt="Uploaded Image" class="img-fluid rounded">
-        </div>
-        <div class="mt-3">
-            <p class="mb-1"><strong>Prediction:</strong> <span id="prediction" class="badge bg-success"></span></p>
-            <p class="mb-0"><strong>Confidence:</strong> <span id="confidence"></span></p>
-        </div>
-        <button id="saveButton" class="btn btn-success w-100 mt-3">Simpan</button>
-    </div>
-</div>
+                                <!-- Capture Button -->
+                                <button type="button" id="capture" class="btn btn-success w-100 mt-3">Ambil
+                                    Foto</button>
 
-<script>
-    const form = document.getElementById('uploadForm');
-    const loading = document.getElementById('loading');
-    const result = document.getElementById('result');
-    const hasil = {};
+                                <!-- Download Link -->
+                                <a id="download" href="#" download="foto.jpg" class="btn btn-primary w-100 mt-2"
+                                    style="display: none;">Unduh Foto</a>
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        loading.style.display = 'block'; // Tampilkan spinner
-        result.style.display = 'none'; // Sembunyikan hasil sebelumnya
-        const fileInput = document.querySelector('#file');
-        const file = fileInput.files[0];
-        const fileURL = URL.createObjectURL(file);
-        console.log(fileURL)
+                                <!-- Upload Image -->
+                                <div class="form-group mb-3">
+                                    <label for="file" class="form-label fw-bold">Upload Gambar:</label>
+                                    <input type="file" name="file" id="file" class="form-control" accept="image/*"
+                                        required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            </form>
+                        </div>
+                    </div>
 
-        try {
-            const formData = new FormData();
-            const file = fileInput.files[0];
-            formData.append('file', file);
+                    <!-- Loading Spinner -->
+                    <div id="loading" class="text-center mt-4" style="display: none;">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Processing your image...</p>
+                    </div>
 
-            fetch('http://127.0.0.1:5000/predict', {
-                method: 'POST',
-                body: formData, // Kirim formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Hasil:', data);
-                // Tampilkan respons dari API (bisa berupa prediksi atau pesan)
-                // alert('Hasil Prediksi: ' + JSON.stringify(data));
-                document.getElementById('uploadedImage').src = fileURL;
-                document.getElementById('prediction').textContent = data.prediction;
-                document.getElementById('confidence').textContent = data.confidence;
-            })
-            .catch(error => {
-                console.error('Terjadi kesalahan:', error);
-                alert('Terjadi kesalahan saat memproses file!');
-            });
+                    <!-- Prediction Result -->
+                    <div class="col-md-6">
+                        <div id="result" class="card p-4" style="display: none;">
+                            <h4 class="text-center">Prediction Result</h4>
+                            <div class="text-center mt-3">
+                                <!-- Menampilkan Hasil Gambar Inputan -->
+                                <img id="uploadedImage" src="" alt="Uploaded Image"
+                                    class="img-fluid rounded result-image">
+                            </div>
+                            <div class="mt-3">
+                                <p class="mb-1"><strong>Prediction:</strong> <span id="prediction"
+                                        class="badge bg-success"></span></p>
+                                <p class="mb-0"><strong>Confidence:</strong> <span id="confidence"></span></p>
+                            </div>
+                            <button id="saveButton" class="btn btn-success w-100 mt-3">Simpan</button>
+                        </div>
+                    </div>
 
-            // Tampilkan hasil prediksi jika berhasil
-            loading.style.display = 'none';
-            result.style.display = 'block';
-        }
-        catch (err) {
-            // Tangani error jika gagal
-            loading.style.display = 'none'; // Sembunyikan spinner
-            console.error(err); // Log error di konsol
-            alert('Failed to process the image. Please try again.');
-        }
-    });
+                    <script>
+                        const form = document.getElementById('uploadForm');
+                        const loading = document.getElementById('loading');
+                        const result = document.getElementById('result');
+                        const hasil = {};
 
-    document.getElementById('saveButton').addEventListener('click', () => {
-        const prediction = document.getElementById('prediction').textContent;
-        const confidence = document.getElementById('confidence').textContent;
-        const uploadedImage = document.getElementById('uploadedImage').src;
+                        form.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            loading.style.display = 'block'; // Tampilkan spinner
+                            result.style.display = 'none'; // Sembunyikan hasil sebelumnya
+                            const fileInput = document.querySelector('#file');
+                            const file = fileInput.files[0];
+                            const fileURL = URL.createObjectURL(file);
+                            console.log(fileURL)
 
-        // Ambil data yang sudah ada dari Local Storage
-        let results = JSON.parse(localStorage.getItem('results')) || [];
+                            try {
+                                const formData = new FormData();
+                                const file = fileInput.files[0];
+                                formData.append('file', file);
 
-        // Tambahkan hasil baru
-        results.push({
-            image: uploadedImage,
-            prediction: prediction,
-            confidence: confidence,
-            date: new Date().toLocaleString()
-        });
+                                fetch('http://127.0.0.1:5000/predict', {
+                                    method: 'POST',
+                                    body: formData, // Kirim formData
+                                })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log('Hasil:', data);
+                                        // Tampilkan respons dari API (bisa berupa prediksi atau pesan)
+                                        // alert('Hasil Prediksi: ' + JSON.stringify(data));
+                                        document.getElementById('uploadedImage').src = fileURL;
+                                        document.getElementById('prediction').textContent = data.prediction;
+                                        document.getElementById('confidence').textContent = data.confidence;
+                                    })
+                                    .catch(error => {
+                                        console.error('Terjadi kesalahan:', error);
+                                        alert('Terjadi kesalahan saat memproses file!');
+                                    });
 
-        // Simpan kembali ke Local Storage
-        localStorage.setItem('results', JSON.stringify(results));
+                                // Tampilkan hasil prediksi jika berhasil
+                                loading.style.display = 'none';
+                                result.style.display = 'block';
+                            }
+                            catch (err) {
+                                // Tangani error jika gagal
+                                loading.style.display = 'none'; // Sembunyikan spinner
+                                console.error(err); // Log error di konsol
+                                alert('Failed to process the image. Please try again.');
+                            }
+                        });
 
-        alert('Hasil berhasil disimpan!');
- });
-</script>
+                        document.getElementById('saveButton').addEventListener('click', () => {
+                            const prediction = document.getElementById('prediction').textContent;
+                            const confidence = document.getElementById('confidence').textContent;
+                            const uploadedImage = document.getElementById('uploadedImage').src;
 
-    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+                            // Ambil data yang sudah ada dari Local Storage
+                            let results = JSON.parse(localStorage.getItem('results')) || [];
 
-    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+                            // Tambahkan hasil baru
+                            results.push({
+                                image: uploadedImage,
+                                prediction: prediction,
+                                confidence: confidence,
+                                date: new Date().toLocaleString()
+                            });
 
-    <script>
-        function performSearch() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-            const tableRows = document.querySelectorAll('table tbody tr');
-            tableRows.forEach(row => {
-                const rowData = row.innerText.toLowerCase();
-                if (rowData.includes(searchQuery)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-        document.getElementById('search-input').addEventListener('input', performSearch);
-    </script>
+                            // Simpan kembali ke Local Storage
+                            localStorage.setItem('results', JSON.stringify(results));
+
+                            alert('Hasil berhasil disimpan!');
+                        });
+                    </script>
+
+                    <script>
+                        const video = document.getElementById('video');
+                        const captureButton = document.getElementById('capture');
+                        const downloadLink = document.getElementById('download');
+
+                        // Akses kamera DroidCam
+                        navigator.mediaDevices.enumerateDevices()
+                            .then(devices => {
+                                const videoDevices = devices.filter(device => device.kind === 'videoinput');
+                                console.log("Kamera Tersedia:", videoDevices);
+
+                                // Pilih DroidCam sebagai sumber video
+                                const droidCam = videoDevices.find(device =>
+                                    device.label.toLowerCase().includes('droidcam')
+                                );
+
+                                const constraints = { video: { deviceId: droidCam ? droidCam.deviceId : videoDevices[0].deviceId } };
+
+                                // Akses kamera DroidCam
+                                return navigator.mediaDevices.getUserMedia(constraints);
+                            })
+                            .then(stream => {
+                                video.srcObject = stream;
+                            })
+                            .catch(error => {
+                                console.error("Tidak bisa mengakses kamera DroidCam:", error);
+                            });
+
+                        // Ambil gambar dari video
+                        captureButton.addEventListener('click', () => {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                            const context = canvas.getContext('2d');
+                            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                            // Konversi gambar ke URL data
+                            const imageData = canvas.toDataURL('image/jpeg');
+
+                            // Tampilkan tautan unduh
+                            downloadLink.href = imageData;
+                            downloadLink.style.display = 'inline';
+                        });
+                    </script>
+
+                    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+
+                    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+                    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+                    <script>
+                        function performSearch() {
+                            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+                            const tableRows = document.querySelectorAll('table tbody tr');
+                            tableRows.forEach(row => {
+                                const rowData = row.innerText.toLowerCase();
+                                if (rowData.includes(searchQuery)) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        }
+                        document.getElementById('search-input').addEventListener('input', performSearch);
+                    </script>
 
 </body>
 
