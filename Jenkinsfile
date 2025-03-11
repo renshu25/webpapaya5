@@ -1,4 +1,3 @@
- Pada Jenkinsfile, copy-kan script berikut
 node {
  checkout scm
  // deploy env dev
