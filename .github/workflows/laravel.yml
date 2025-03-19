@@ -46,10 +46,13 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
 
-    - name: Run Migrations
+    - name: Run Migrations (SQLite)
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
       run: php artisan migrate
 
-    - name: Run Tests
+    - name: Run Tests (SQLite)
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
