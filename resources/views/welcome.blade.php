@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selamat Datang Di Werehouse BPBD | Kabupaten Jember</title>
+  <title>Selamat Datang Di Website PapayaTechr</title>
 
   <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
@@ -395,7 +395,7 @@
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="ud-widget">
               <a href="index.html" class="ud-footer-logo">
-                <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="logo" />
+                <img src="{{ asset('landingpages') }}/assets/images/logo/Group 1.svg" alt="logo" />
               </a>
               <p class="ud-widget-desc">
     Website ini bertujuan untuk meningkatkan efisiensi, akurasi, dan kecepatan dalam proses deteksi kematangan buah pepaya, serta memberikan informasi yang transparan dan mudah diakses bagi petani dan pengelola hasil pertanian.

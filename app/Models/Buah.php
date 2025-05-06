@@ -9,9 +9,25 @@ class Buah extends Model
 {
     use HasFactory;
 
-    // Tentukan nama tabel jika berbeda dari konvensi
-    protected $table = 'buah'; // Nama tabel yang sesuai
+    // Nama tabel (kalau kamu pakai nama 'buah', ini wajib diset)
+    protected $table = 'buah';
 
-    // Jika Anda ingin menentukan kolom yang dapat diisi
-    protected $fillable = ['kode', 'kematangan', 'accuracy', 'image', 'tanggal_deteksi'];
+    // Kolom yang bisa diisi saat create/update
+    protected $fillable = [
+        'kode',
+        'kematangan',
+        'accuracy',
+        'image',
+        'tanggal_deteksi',
+        'harga',
+        'bobot'
+    ];
+
+    // Kalau kamu pakai timestamp bawaan Laravel, pastikan ini true
+    public $timestamps = true;
+
+    // Format tanggal deteksi (optional untuk casting otomatis)
+    protected $casts = [
+        'tanggal_deteksi' => 'datetime',
+    ];
 }

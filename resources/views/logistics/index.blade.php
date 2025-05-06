@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Deteksi &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; Deteksi &mdash; Papaya Tech</title>
 
     <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logopapaya.png" type="image/png" />
 
@@ -168,7 +168,7 @@
                     <div class="sidebar-brand">
                         <a href="{{ route('home') }}">
                             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logopapaya1.png"
-                                style="width: 163px; height: auto; margin-top: 20px;">
+                                style="width: 120px; height: auto; margin-top: 23px; margin-bottom: 28px;">
                             <p><br></p>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
@@ -199,10 +199,13 @@
             </div>
 
             <!--main content -->
-            <div class="container mt-5">
-                <h1 class="text-center mb-4">Image Classification</h1>
+            <div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Deteksi</h1>
+    </div>
                 <!-- Card for Upload -->
-                <div class="row g-4">
+                <div class="row">
                     <!-- Card Upload dan Kamera -->
                     <div class="col-md-6">
                         <div class="card p-4">
@@ -250,10 +253,28 @@
                                     class="img-fluid rounded result-image">
                             </div>
                             <div class="mt-3">
-                                <p class="mb-1"><strong>Prediction:</strong> <span id="prediction"
-                                        class="badge bg-success"></span></p>
-                                <p class="mb-0"><strong>Confidence:</strong> <span id="confidence"></span></p>
-                            </div>
+    <p class="mb-1"><strong>Prediction:</strong> <span id="prediction" class="badge bg-success"></span></p>
+    <p class="mb-1"><strong>Confidence:</strong> <span id="confidence"></span></p>
+
+    <!-- Tambahkan Dropdown Ukuran -->
+    <div class="form-group mt-3">
+        <label for="sizeSelect"><strong>Pilih Ukuran Buah:</strong></label>
+        <select id="sizeSelect" class="form-control">
+            <option value="kecil">Kecil</option>
+            <option value="sedang">Sedang</option>
+            <option value="besar">Besar</option>
+        </select>
+    </div>
+
+    <button id="simulateBtn" class="btn btn-warning w-100 mt-2">Simulasikan Harga</button>
+
+    <!-- Hasil Simulasi -->
+    <div id="simulationResult" class="mt-3" style="display: none;">
+        <p><strong>Estimasi Bobot:</strong> <span id="weightResult"></span> kg</p>
+        <p><strong>Harga Jual:</strong> <span id="priceResult"></span></p>
+    </div>
+</div>
+
                             <button id="saveButton" class="btn btn-success w-100 mt-3">Simpan</button>
                         </div>
                     </div>
@@ -308,27 +329,33 @@
                             }
                         });
 
-                        document.getElementById('saveButton').addEventListener('click', () => {
-                            const prediction = document.getElementById('prediction').textContent;
-                            const confidence = document.getElementById('confidence').textContent;
-                            const uploadedImage = document.getElementById('uploadedImage').src;
+                       document.getElementById('saveButton').addEventListener('click', () => {
+    const prediction = document.getElementById('prediction').textContent;
+    const confidence = document.getElementById('confidence').textContent;
+    const uploadedImage = document.getElementById('uploadedImage').src;
 
-                            // Ambil data yang sudah ada dari Local Storage
-                            let results = JSON.parse(localStorage.getItem('results')) || [];
+    // Data tambahan dari simulasi
+    const ukuran = document.getElementById("sizeSelect").value;
+    const berat = document.getElementById("weightResult").textContent;
+    const harga = document.getElementById("priceResult").textContent;
 
-                            // Tambahkan hasil baru
-                            results.push({
-                                image: uploadedImage,
-                                prediction: prediction,
-                                confidence: confidence,
-                                date: new Date().toLocaleString()
-                            });
+    let results = JSON.parse(localStorage.getItem('results')) || [];
 
-                            // Simpan kembali ke Local Storage
-                            localStorage.setItem('results', JSON.stringify(results));
+    results.push({
+        image: uploadedImage,
+        prediction: prediction,
+        confidence: confidence,
+        ukuran: ukuran,
+        berat: berat,
+        harga: harga,
+        date: new Date().toLocaleString()
+    });
 
-                            alert('Hasil berhasil disimpan!');
-                        });
+    localStorage.setItem('results', JSON.stringify(results));
+
+    alert('Hasil berhasil disimpan!');
+});
+
                     </script>
 
                     <script>
@@ -373,8 +400,36 @@
                             // Tampilkan tautan unduh
                             downloadLink.href = imageData;
                             downloadLink.style.display = 'inline';
+
                         });
                     </script>
+                    <script>
+    // Fungsi simulasi harga
+    document.getElementById("simulateBtn").addEventListener("click", () => {
+        const kematangan = document.getElementById("prediction").textContent.toLowerCase();
+        const ukuran = document.getElementById("sizeSelect").value;
+
+        const hargaPerKg = {
+            "mentah": 4000,
+            "setengah matang": 5000,
+            "matang": 6000
+        };
+
+        const bobotPerUkuran = {
+            "kecil": 0.8,
+            "sedang": 1.2,
+            "besar": 1.8
+        };
+
+        const berat = bobotPerUkuran[ukuran];
+        const harga = hargaPerKg[kematangan] * berat;
+
+        document.getElementById("weightResult").textContent = berat.toFixed(2);
+        document.getElementById("priceResult").textContent = "Rp " + harga.toLocaleString('id-ID');
+        document.getElementById("simulationResult").style.display = "block";
+    });
+</script>
+
 
                     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
                     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>

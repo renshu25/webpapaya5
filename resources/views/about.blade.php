@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Selamat Datang Di Werehouse BPBD | Kabupaten Jember </title>
+    <title> Selamat Datang Di Website PapayaTech </title>
 
     <link
       rel="shortcut icon"
@@ -396,8 +396,8 @@
             </div>
             <div class="col-md-4">
               <p class="ud-footer-bottom-right">
-                Selamat Datang Di Website Resmi Werehouse BPBD
-                <a href="/" rel="nofollow">Werehouse BPBD Kabupaten Jember </a>
+                Selamat Datang Di Website Resmi Papaya Tech
+                <a href="/" rel="nofollow">Papaya Tech </a>
               </p>
             </div>
           </div>

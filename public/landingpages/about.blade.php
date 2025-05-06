@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Werehouse| BPBD</title>
+    <title>Papaya Tech</title>
 
     <!--====== Favicon Icon ======-->
     <link
@@ -281,7 +281,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6">
               <div class="ud-widget">
                 <a href="index.html" class="ud-footer-logo">
-                  <img src="assets/images/logo/logo.svg" alt="logo" />
+                  <img src="assets/images/Group 1.svg" alt="logo" />
                 </a>
                 <p class="ud-widget-desc">
                 Website ini bertujuan untuk meningkatkan efisiensi, transparansi, 
@@ -360,8 +360,8 @@
             </div>
             <div class="col-md-4">
               <p class="ud-footer-bottom-right">
-                Selamat Datang Di Website Resmi Werehouse BPBD
-                <a href="/" rel="nofollow">Werehouse BPBD Kabupaten Jember </a>
+                Selamat Datang Di Website Papaya Tech
+                <a href="/" rel="nofollow">Papaya Tech </a>
               </p>
             </div>
           </div>

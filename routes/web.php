@@ -10,6 +10,7 @@ use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\InlogisticController;
 use App\Http\Controllers\OutlogisticController;
 use App\Http\Controllers\LogisticRequestController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -95,6 +96,7 @@ Route::controller(LogisticRequestController::class)->prefix('logisticrequests')-
     Route::post('store', 'store')->name('logisticrequests.store');
     Route::delete('destroy/{id}', 'destroy')->name('logisticrequests.destroy');
     Route::post('confirm/{id}', 'confirm')->name('logisticrequests.confirm');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 

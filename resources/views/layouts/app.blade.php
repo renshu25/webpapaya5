@@ -196,119 +196,169 @@
 
       <!-- Main Content -->
       <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>Dashboard</h1>
-          </div>
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
-                  <i class="far fa-user"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Mentah</h4>
-                  </div>
-                  <div class="card-body">
-                   
-                  </div>
-                </div>
-              </div>
+  <section class="section">
+    <div class="section-header">
+      <h1>Dashboard</h1>
+    </div>
+
+    <!-- Card Statistik -->
+    <div class="row">
+  <div class="col-12">
+     <div class="card card-statistic-1 rounded shadow-sm">
+      <div class="card-body">
+        <div class="row">
+          <!-- Mentah -->
+          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+            <div class="card-icon bg-danger">
+              <i class="far fa-user"></i>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="fas fa-sign-in-alt"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Setengah Matang</h4>
-                  </div>
-                  <div class="card-body">
-                    
-                  </div>
-                </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Mentah</h4>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-sign-out-alt"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Matang</h4>
-                  </div>
-                  <div class="card-body">
-                    {{ $outlogisticsCount }}
-                  </div>
-                </div>
-              </div>
+              <div class="card-body" id="count-mentah">0</div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                <h4>Daftar Data Buah</h4>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="resultsTable">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th style="text-align: center;">Image</th>
-                                    <th style="text-align: center;">Prediction</th>
-                                    <th style="text-align: center;">Confidence</th>
-                                    <th style="text-align: center;">Tanggal Deteksi</th>
-                                    <th style="text-align: center;">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="resultsBody">
-                                <!-- Hasil akan ditambahkan di sini -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          
+          <!-- Setengah Matang -->
+          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+            <div class="card-icon bg-warning">
+              <i class="fas fa-sign-in-alt"></i>
             </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Setengah Matang</h4>
+              </div>
+              <div class="card-body" id="count-setengah">0</div>
+            </div>
+          </div>
+
+          <!-- Matang -->
+          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+            <div class="card-icon bg-success">
+              <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Matang</h4>
+              </div>
+              <div class="card-body" id="count-matang">0</div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
 </div>
 
+
+ <!-- Table Data Buah -->
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h4>Daftar Data Buah</h4>
+        <!-- Dropdown Urutan -->
+        <select class="form-select w-auto" id="sortSelect">
+          <option value="newest" selected>Urutkan: Terbaru</option>
+          <option value="oldest">Urutkan: Terlama</option>
+        </select>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped" id="resultsTable">
+          <thead class="table-primary">
+            <tr>
+              <th class="text-center">Image</th>
+              <th class="text-center">Prediction</th>
+              <th class="text-center">Confidence</th>
+              <th class="text-center">Tanggal Deteksi</th>
+              <th class="text-center">Harga</th>
+              <th class="text-center">Bobot</th>
+              <th class="text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <!-- Data dari localStorage akan ditambahkan di sini -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+@push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const results = JSON.parse(localStorage.getItem('results')) || [];
-        const resultsBody = document.getElementById('resultsBody');
+  document.addEventListener('DOMContentLoaded', () => {
+    const resultsBody = document.getElementById('resultsBody');
+    const sortSelect  = document.getElementById('sortSelect');
 
-        results.forEach((result, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td style="text-align: center;"><img src="${result.image}" alt="Image" style="width: 50px;"></td>
-                <td style="text-align: center;">${result.prediction}</td>
-                <td style="text-align: center;">${result.confidence}</td>
-                <td style="text-align: center;">${result.date}</td>
-                <td style="text-align: center;">
-                    <button class="btn btn-danger btn-sm" onclick="deleteResult(${index})">Hapus</button>
-                </td>
-            `;
-            resultsBody.appendChild(row);
-        });
-    });
+    // Ambil data
+    const results = JSON.parse(localStorage.getItem('results')) || [];
 
-    function deleteResult(index) {
-        // Ambil data yang sudah ada dari Local Storage
-        let results = JSON.parse(localStorage.getItem('results')) || [];
+    // Render tabel dari array yang sudah diurutkan
+    function renderTable(arr) {
+      resultsBody.innerHTML = '';
+      let mentah=0, setengah=0, matang=0;
 
-        // Hapus hasil berdasarkan index
-        results.splice(index, 1);
+      arr.forEach((result, idx) => {
+        const raw = String(result.prediction || '').toLowerCase().trim();
+        const pred = raw.replace(/_/g,' ');
 
-        // Simpan kembali ke Local Storage
-        localStorage.setItem('results', JSON.stringify(results));
+        // Hitung kategori
+        if (pred==='mentah') mentah++;
+        else if (pred==='setengah matang') setengah++;
+        else if (pred==='matang') matang++;
 
-        // Refresh halaman untuk memperbarui tampilan
-        location.reload();
+        // Pakai langsung result.date (apa pun formatnya)
+        const tanggal = result.date || '—';
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td style="text-align: center;"><img src="${result.image}" alt="Image" style="width: 50px;"></td>
+          <td class="text-center">${pred.charAt(0).toUpperCase() + pred.slice(1)}</td>
+          <td class="text-center">${result.confidence||0}%</td>
+          <td class="text-center">${tanggal}</td>
+          <td class="text-center">${result.harga || 'Rp 0'}</td>
+          <td class="text-center">${result.berat || '0 kg'}</td>
+          <td class="text-center">
+            <button class="btn btn-danger btn-sm" onclick="deleteResult(${idx})">Hapus</button>
+          </td>
+        `;
+        resultsBody.appendChild(row);
+      });
+
+      // Update counter kalau ada elemennya
+      if (document.getElementById('count-mentah')) {
+        document.getElementById('count-mentah').innerText     = mentah;
+        document.getElementById('count-setengah').innerText  = setengah;
+        document.getElementById('count-matang').innerText    = matang;
+      }
     }
+
+    // Sort berdasarkan insertion order:
+    // newest = reverse(), oldest = as-is
+    function sortResults(order) {
+      const sorted = order === 'newest'
+        ? [...results].reverse()
+        : [...results];
+      renderTable(sorted);
+    }
+
+    // Pasang listener dan render awal
+    sortSelect.addEventListener('change', () => sortResults(sortSelect.value));
+    sortResults('newest');
+  });
+
+  function deleteResult(index) {
+    const arr = JSON.parse(localStorage.getItem('results')) || [];
+    arr.splice(index,1);
+    localStorage.setItem('results', JSON.stringify(arr));
+    location.reload();
+  }
 </script>
+
                     @php
             use Carbon\Carbon;
             @endphp

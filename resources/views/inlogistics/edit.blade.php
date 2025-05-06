@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title> Logistik Masuk &rsaquo; Edit logistik masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title> Logistik Masuk &rsaquo; Edit logistik masuk &mdash; Papaya Tech</title>
 
     <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
