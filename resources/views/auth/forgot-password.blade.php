@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 log-det">
                             <div class="small-logo">
-                                <img src="{{ asset('tloginjadi') }}/assets/images/logo1login.svg" alt="Logo">
+                                <img src="{{ asset('tloginjadi') }}/assets/images/Group 1.svg" alt="Logo">
                             </div>
                             <p class="dfmn">Forgot Password</p>
                             <div class="text-box-cont">
@@ -103,7 +103,7 @@
 </div>
                                 </form>
                                 <div class="row">
-                                    <p class="forget-p">Warehouse | BPBD</p>
+                                    <p class="forget-p">PAPAYA TECH</p>
                                 </div>
                                 <div class="row">
                                     <p class="small-info"></p>
@@ -177,9 +177,6 @@
                         <div class="col-lg-6 col-md-6 box-de">
                             <div class="inn-cover">
                                 <div class="ditk-inf">
-                                    <div class="small-logo">
-                                        <img src="{{ asset('tloginjadi') }}/assets/images/logo2login.svg" alt="Logo">
-                                    </div>
                                     <h2 class="w-100">Kembali ke halaman Login? </h2>
                                     <p>Jika anda yakin, Silahkan tekan tombol dibawah ini !</p>
                                     <a href="{{ route('login') }}">

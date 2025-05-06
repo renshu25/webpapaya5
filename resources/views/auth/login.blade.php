@@ -73,7 +73,7 @@
                             <div class="small-logo">
                                 <img src="{{ asset('tloginjadi') }}/assets/images/Group 1.svg" alt="Logo">
                             </div>
-                            <p class="dfmn">Login Administrator</p>
+                            <h2 class="w-100"></h2>
 
                             <div class="text-box-cont">
                                 <form method="POST" action="{{ route('login') }}">
@@ -109,7 +109,7 @@
             cursor: pointer; /* Menunjukkan bahwa tombol dapat diklik */
         }
     </style>
-    <button class="btn btn-danger">Login</button>
+    <button class="btn btn-danger">LOGIN</button>
 </div>
                                     <div class="row">
                                         <p class="forget-p">PAPAYA TECH</span></p>
