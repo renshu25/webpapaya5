@@ -194,12 +194,13 @@
       </script>
     @endif
 
-      <!-- Main Content -->
-      <div class="main-content">
+<!-- Main Content -->
+<div class="main-content">
   <section class="section">
     <div class="section-header">
-      <h1>Dashboard</h1>
+      <h1>&nbsp;</h1> <!-- Menghilangkan teks "Dashboard" tetapi mempertahankan tag h1 -->
     </div>
+
 
     <!-- Card Statistik -->
     <div class="row">
