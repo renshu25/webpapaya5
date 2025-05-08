@@ -81,17 +81,17 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .bg-secondary {
   background-color: #cdd3d8 !important; }
 
-.bg-success {
-  background-color: #63ed7a !important; }
+  .bg-success,
+  .bg-warning,
+  .bg-danger {
+    background-color: transparent !important;  /* Menghilangkan latar belakang berwarna */
+    border: none !important;  /* Menghilangkan border */
+    box-shadow: none !important;  /* Menghilangkan bayangan */
+  }
 
 .bg-info {
   background-color: #3abaf4 !important; }
 
-.bg-warning {
-  background-color: #ffa426 !important; }
-
-.bg-danger {
-  background-color: #fc544b !important; }
 
 .bg-light {
   background-color: #e3eaef !important; }
@@ -308,7 +308,19 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 13px;
   min-width: 2.375rem;
   line-height: 36px; }
+  .card-wrap .card-header h4 {
+  font-size: 18px !important;  /* Memperbesar ukuran font untuk header (Mentah, Setengah Matang, Matang) */
+}
 
+.card-body {
+  font-size: 28px !important;  /* Memperbesar ukuran font untuk angka (0) */
+  font-weight: 700;  /* Memberikan ketebalan pada angka */
+}
+
+  .card-icon img {
+    width: 60px !important;  /* Mengubah ukuran ikon gambar */
+    height: 60px !important;  /* Mengubah ukuran ikon gambar */
+  }
 .selectgroup-button-icon {
   padding-left: .5rem;
   padding-right: .5rem; }
@@ -2795,6 +2807,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
   animation: pulsate 1s ease-out;
   animation-iteration-count: infinite;
   opacity: 1; }
+  
 
 @-webkit-keyframes pulsate {
   0% {

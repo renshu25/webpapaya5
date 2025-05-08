@@ -203,15 +203,15 @@
 
 
     <!-- Card Statistik -->
-    <div class="row">
+<div class="row">
   <div class="col-12">
-     <div class="card card-statistic-1 rounded shadow-sm">
+    <div class="card card-statistic-1 rounded shadow-sm">
       <div class="card-body">
         <div class="row">
           <!-- Mentah -->
           <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
             <div class="card-icon bg-danger">
-              <i class="far fa-user"></i>
+              <img src="{{ asset('mentah.png') }}" alt="Mentah Icon" width="40" height="40">
             </div>
             <div class="card-wrap">
               <div class="card-header">
@@ -220,11 +220,11 @@
               <div class="card-body" id="count-mentah">0</div>
             </div>
           </div>
-          
+
           <!-- Setengah Matang -->
           <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
             <div class="card-icon bg-warning">
-              <i class="fas fa-sign-in-alt"></i>
+              <img src="{{ asset('setengah.png') }}" alt="Setengah Matang Icon" width="40" height="40">
             </div>
             <div class="card-wrap">
               <div class="card-header">
@@ -237,7 +237,7 @@
           <!-- Matang -->
           <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
             <div class="card-icon bg-success">
-              <i class="fas fa-sign-out-alt"></i>
+              <img src="{{ asset('matang.png') }}" alt="Matang Icon" width="40" height="40">
             </div>
             <div class="card-wrap">
               <div class="card-header">
