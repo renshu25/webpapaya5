@@ -202,55 +202,47 @@
     </div>
 
 
-    <!-- Card Statistik -->
-<div class="row">
-  <div class="col-12">
-    <div class="card card-statistic-1 rounded shadow-sm">
-      <div class="card-body">
-        <div class="row">
-          <!-- Mentah -->
-          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-            <div class="card-icon bg-danger">
-              <img src="{{ asset('mentah.png') }}" alt="Mentah Icon" width="40" height="40">
-            </div>
-            <div class="card-wrap">
-              <div class="card-header">
-                <h4>Mentah</h4>
-              </div>
-              <div class="card-body" id="count-mentah">0</div>
-            </div>
-          </div>
+   <div class="row">
+  <!-- Mentah -->
+  <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+    <div class="card card-custom box-shape shadow-lg bg-primary">
+      <div class="card-body card-body-custom">
+        <img src="{{ asset('mentah.png') }}" alt="Mentah Icon" class="card-icon me-3" width="40" height="40">
+        <div>
+          <span class="card-text">Mentah</span>
+          <h2 class="mt-2 card-text" id="count-mentah">0</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- Setengah Matang -->
-          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-            <div class="card-icon bg-warning">
-              <img src="{{ asset('setengah.png') }}" alt="Setengah Matang Icon" width="40" height="40">
-            </div>
-            <div class="card-wrap">
-              <div class="card-header">
-                <h4>Setengah Matang</h4>
-              </div>
-              <div class="card-body" id="count-setengah">0</div>
-            </div>
-          </div>
+  <!-- Setengah Matang -->
+  <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+    <div class="card card-custom box-shape shadow-lg bg-secondary">
+      <div class="card-body card-body-custom">
+        <img src="{{ asset('setengah.png') }}" alt="Setengah Matang Icon" class="card-icon me-3" width="40" height="40">
+        <div>
+          <span class="card-text">Setengah Matang</span>
+          <h2 class="mt-2 card-text" id="count-setengah">0</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- Matang -->
-          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
-            <div class="card-icon bg-success">
-              <img src="{{ asset('matang.png') }}" alt="Matang Icon" width="40" height="40">
-            </div>
-            <div class="card-wrap">
-              <div class="card-header">
-                <h4>Matang</h4>
-              </div>
-              <div class="card-body" id="count-matang">0</div>
-            </div>
-          </div>
+  <!-- Matang -->
+  <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+    <div class="card card-custom box-shape shadow-lg bg-accent">
+      <div class="card-body card-body-custom">
+        <img src="{{ asset('matang.png') }}" alt="Matang Icon" class="card-icon me-3" width="40" height="40">
+        <div>
+          <span class="card-text">Matang</span>
+          <h2 class="mt-2 card-text" id="count-matang">0</h2>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
  <!-- Table Data Buah -->
