@@ -8,7 +8,7 @@
 
     <link
       rel="shortcut icon"
-      href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png"
+      href="{{ asset('landingpages') }}/assets/images/logo/logopapaya.png"
       type="image/png"
     />
 

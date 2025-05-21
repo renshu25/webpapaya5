@@ -1,0 +1,50 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: papayatech-app
+    container_name: papayatech-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    networks:
+      - papayatech
+
+  webserver:
+    image: nginx:alpine
+    container_name: papayatech-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - papayatech
+
+  db:
+    image: mysql:8.0
+    container_name: papayatech-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: papayatech
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - papayatech
+
+networks:
+  papayatech:
+
+volumes:
+  dbdata:
+

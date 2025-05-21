@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Selamat Datang Di Website PapayaTechr</title>
 
-  <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+  <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logopapaya.png" type="image/png" />
 
   <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/animate.css" />
@@ -22,6 +22,18 @@
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
+
+         <a href="javascript:location.reload()" class="ud-footer-logo me-3">
+  <img
+    src="{{ asset('landingpages') }}/assets/images/logo/Group 1.svg"
+    alt="logo"
+    style="height: 60px; transition: transform 0.3s ease, opacity 0.3s ease;"
+    onmouseover="this.style.transform='scale(1.1)'; this.style.opacity='0.9';"
+    onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';"
+  />
+</a>
+
+
             <button class="navbar-toggler">
               <span class="toggler-icon"> </span>
               <span class="toggler-icon"> </span>
@@ -65,6 +77,7 @@
                 </li>
               </ul>
             </div>
+            
             <div class="navbar-btn d-none d-sm-inline-block">
               <a href="{{ route('login') }}" class="btn btn-primary">
                 Login
@@ -72,9 +85,9 @@
             </div>
             <style>
   .btn {
-    background-color: #007bff; /* Warna awal biru */
-    color: white; /* Warna teks putih */
-    border: 1px solid #007bff; /* Warna border biru */
+    background-color: #ffffff; /* Warna awal biru */
+    color: black; /* Warna teks putih */
+    border: 1px solid orange; /* Warna border biru */
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
