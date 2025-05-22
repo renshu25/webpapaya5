@@ -244,7 +244,6 @@
 </div>
 
 
-
  <!-- Table Data Buah -->
 <div class="row mt-4">
   <div class="col-12">
